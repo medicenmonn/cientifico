@@ -5,6 +5,8 @@ import Header from '../templates/Header';   //se puede no poner la extension, en
 import Home from '../pages/Home';           // js lo identifica por medio de babel
 import Character from '../pages/Character';
 import Error404 from '../pages/Error404';
+import getHash from '../utils/getHash';
+import resolveRoutes from '../utils/resolveRoutes';
 
 /** crear las rutas que vamos a manejar **/
 
@@ -24,6 +26,11 @@ const routes = {
    const content = null || document.getElementById('content')  //tenemos 2 elem hacia donde puedo hacer render
 
    header.innerHTML = await Header();  //para ver que vfunciona, envia el template de header a la vista previa de html
- }
+   let hash = getHash();          // crear variables, obtengo el hash donde se encuentra
+   let route = await resolveRoutes(hash)  //manejar la ruta, await pq puede tardar
+   let render = routes[route] ? routes[route] : Error404;  // render contiene el valor de las rutas que acabamos de obtener
+   content.innerHTML = await render();
+  }
 
  export default router;
+
