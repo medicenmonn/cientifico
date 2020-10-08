@@ -22,12 +22,12 @@ module.exports = { // aqui se encuentra toda la config de lo que va a suceder. M
         ]
     },
     plugins: [  //establecemos los plugins que vamos a utilizar
-        new HtmlWebpackPlugin([  //allow trabajar con los archivos html
+        new HtmlWebpackPlugin( //allow trabajar con los archivos html
             {
                 inject: true, // como vamos a inyectar un valor a un archivo html
-                template: './public/index.html',  // doreccion donde se encuentra el template principal
+                template: './public/index.html',  // direccion donde se encuentra el template principal
                 filename: './index.html'  // el nombre que tendrá el archivo
             }
-        ])
+        ),
     ]
 }
